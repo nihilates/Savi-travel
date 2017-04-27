@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Styles from '../../styles/styles.js';
 import Icon from '../../node_modules/react-native-vector-icons/FontAwesome';
 import MaterialIcons from '../../node_modules/react-native-vector-icons/MaterialIcons';
+import config from '../config/config.js';
 import {
   Text,
   Button,
@@ -20,7 +21,7 @@ class ToursList extends Component {
   }
 
   componentWillMount() {
-    fetch('https://savi-travel.com:8084/api/tours')
+    fetch('https://savi-travel.com:'+config.port+'/api/tours')
       .then(resp => resp.json())
       .then(data => this.setState({data}))
       .catch(err => console.error(err));
@@ -34,8 +35,9 @@ class ToursList extends Component {
     let tours = this.state.data.filter(item => {
       return item.cityId === this.props.data.id;
     });
-    let port = 8084;
-    let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    //let port = 8084; //substituted for config method
+    //let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    let imgUri = 'https://savi-travel.com:'+config.port+'/api/images';
     return (
       <View style={{height: height, flex: 1, justifyContent: 'space-between'}}>
         <View style={{width: width / 1.03}}>

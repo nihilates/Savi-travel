@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
+import config from '../config/config.js';
 import Autocomplete from 'react-native-autocomplete-input';
 
 let styles = StyleSheet.create({
@@ -107,7 +108,7 @@ class RegisterUser extends Component {
       this.setState({complete: false});
     } else {
       // POST request to backend
-      fetch('https://savi-travel.com:8080/api/users', {
+      fetch('https://savi-travel.com:'+config.port+'/api/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -240,7 +241,7 @@ class CitySelector extends Component {
   }
 
   componentWillMount() {
-    fetch('https://savi-travel.com:8080/api/cities')
+    fetch('https://savi-travel.com:'+config.port+'/api/cities')
       .then(resp => resp.json())
       .then(data => this.setState({locations: data}))
       .catch(err => console.error(err));

@@ -7,7 +7,8 @@ import {
   TouchableHighlight,
   Dimensions
 } from 'react-native';
-import UserAvatar from 'react-native-user-avatar';
+import config from '../config/config.js';
+//import UserAvatar from 'react-native-user-avatar'; //disabled to bypass build failure
 
 let {width, height} = Dimensions.get('window');
 let styles = StyleSheet.create({
@@ -39,7 +40,7 @@ let styles = StyleSheet.create({
   }
 });
 
-let port = 8080;
+//let port = 8080; //statis port assignment, switched with config method
 
 class UserProfile extends Component {
   constructor(props) {
@@ -75,7 +76,8 @@ class UserProfile extends Component {
         style={styles.profilePic}
         source={{uri: imgUri + this.props.data.photo}}
       />*/
-    let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    //let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    let imgUri = 'https://savi-travel.com:'+config.port+'/api/images/'; //alternate image path
     return (
       <View style={styles.container}>
         <View style={{marginTop: 20}}>

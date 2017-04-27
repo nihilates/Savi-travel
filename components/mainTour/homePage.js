@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Styles from '../../styles/styles.js';
+import config from '../config/config.js';
 import {
   Text,
   Button,
@@ -18,7 +19,7 @@ class HomePage extends Component {
   }
 
   componentWillMount() {
-    fetch('https://savi-travel.com:8084/api/cities')
+    fetch('https://savi-travel.com:'+config.port+'/api/cities')
       .then(resp => resp.json())
       .then(data => this.setState({data}))
       .catch(err => console.error(err));
@@ -26,8 +27,9 @@ class HomePage extends Component {
 
   render() {
     let {width, height} = Dimensions.get('window');
-    let port = 8080;
-    let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    // let port = 8080; //replaced with config method
+    // let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    let imgUri = 'https://savi-travel.com:'+config.port+'/api/images/';
     return (
       <View>
         <ScrollView>

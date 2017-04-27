@@ -58,3 +58,6 @@ fastlane/screenshots
 
 #Auth0
 auth0-credentials.js
+
+#config
+components/config/config.js

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Styles from '../../styles/styles.js';
 import Icon from '../../node_modules/react-native-vector-icons/FontAwesome';
 import MaterialIcons from '../../node_modules/react-native-vector-icons/MaterialIcons';
+import config from '../config/config.js';
 import {
   Text,
   Button,
@@ -53,8 +54,9 @@ class TourDetails extends Component {
   */
 
   render() {
-    let port = 8084;
-    let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    //let port = 8084; //replaced with config method
+    //let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    let imgUri = 'https://savi-travel.com:'+config.port+'/api/images/';
     const {width, height} = Dimensions.get('window');
     var _scrollView: ScrollView;
     return (
@@ -318,8 +320,9 @@ class TourInfo extends Component {
   }
 
   render() {
-    let port = 8084;
-    let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    //let port = 8084; //replaced with config method
+    //let imgUri = `https://savi-travel.com:${port}/api/images/`;
+    let imgUri = 'https://savi-travel.com:'+config.port+'/api/images/';
     return (
       <View>
         <Image

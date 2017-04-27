@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from '../config/config.js';
 import {
   Text,
   Button,
@@ -55,7 +56,7 @@ class InitialOpen extends Component {
             } else {
               // check if user exists
               this.profile = data;
-                fetch('https://savi-travel.com:8080/api/users', {
+                fetch('https://savi-travel.com:'+config.port+'/api/users', {
                   method: 'POST',
                   headers: {
                     'Accept': 'application/json',

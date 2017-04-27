@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
   AsyncStorage
 } from 'react-native';
-
+import config from './config/config.js';
 import Auth0Lock from 'react-native-lock';
 
 import credentials from '../auth0-credentials';
@@ -32,7 +32,8 @@ class WelcomeView extends Component {
       }
       this.setToken(token.idToken);
       // check if user exists
-      fetch('https://savi-travel.com:8080/api/users', {
+      //fetch('https://savi-travel.com:8080/api/users', { //static port
+      fetch('https://savi-travel.com:'+config.port+'/api/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
